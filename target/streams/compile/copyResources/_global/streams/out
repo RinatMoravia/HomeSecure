@@ -1,0 +1,3 @@
+[debug] Copy resource mappings: 
+[debug] 	(/Users/rinatmoravia/IdeaProjects/HomeSecure/conf/logback.xml,/Users/rinatmoravia/IdeaProjects/HomeSecure/target/scala-2.13/classes/logback.xml)
+[debug] 	(/Users/rinatmoravia/IdeaProjects/HomeSecure/conf/application.conf,/Users/rinatmoravia/IdeaProjects/HomeSecure/target/scala-2.13/classes/application.conf)

@@ -1,0 +1,4 @@
+[error] /Users/rinatmoravia/IdeaProjects/HomeSecure/app/Module.scala:4:8: not found: object services
+[error] import services.{ApplicationTimer, AtomicCounter, Counter}
+[error]        ^
+[error] one error found
