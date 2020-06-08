@@ -2,7 +2,8 @@ package entities
 
 import play.api.libs.json.JsValue
 
-case class DeviceInfo(isMobileDevice: String, deviceType: String, brand: String, brandCode: String, brandUrl: String, name: String)
+case class DeviceInfo(isMobileDevice: String, deviceType: String,
+                      brand: String, brandCode: String, brandUrl: String, name: String, userAgent:Option[String] = None)
 
 
 object DeviceInfo{
