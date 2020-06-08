@@ -1,4 +1,4 @@
-import Dao.Device
+import dao.Device
 import entities.DeviceInfo
 import services.ApiService
 

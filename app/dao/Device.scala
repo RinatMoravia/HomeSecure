@@ -1,4 +1,4 @@
-package Dao
+package dao
 
 import entities.DeviceInfo
 import org.jooq.impl.DSL
