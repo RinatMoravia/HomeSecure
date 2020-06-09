@@ -7,8 +7,8 @@ import org.jooq.impl.DSL
 
 trait Dao {
 
-  private val connection = DriverManager.getConnection("jdbc:sqlite:/Users/rinatmoravia/sqlite/Home_Secure.db")
-
-  protected val dslContext = DSL.using(connection, SQLDialect.SQLITE)
+//  private val connection = DriverManager.getConnection("jdbc:sqlite:/Users/rinatmoravia/sqlite/Home_Secure.db")
+//
+//  protected val dslContext = DSL.using(connection, SQLDialect.SQLITE)
 
 }
