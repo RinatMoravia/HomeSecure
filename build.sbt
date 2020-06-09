@@ -1,7 +1,7 @@
 lazy val root = (project in file("."))
-  .enablePlugins(PlayScala)
+//  .enablePlugins(PlayScala)
   .settings(
-    name := """homesecure""",
+    name := "homesecure",
     version := "1.0-SNAPSHOT",
     scalaVersion := "2.13.1",
     libraryDependencies ++= Seq(
@@ -21,3 +21,5 @@ lazy val root = (project in file("."))
       "-Xfatal-warnings"
     )
   )
+
+mainClass in (Compile, run) := Some("src.Main")
