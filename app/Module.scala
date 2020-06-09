@@ -1,6 +1,11 @@
+import java.sql.DriverManager
 import java.time.Clock
 
+import Dao.{DeviceDao, DeviceDaoImpl}
+import akka.actor.ActorSystem
 import com.google.inject.AbstractModule
+import org.jooq.SQLDialect
+import org.jooq.impl.DSL
 import play.api.libs.ws.WSClient
 import play.api.libs.ws.ahc.AhcWSClient
 
@@ -16,13 +21,14 @@ import play.api.libs.ws.ahc.AhcWSClient
  * configuration file.
  */
 class Module extends AbstractModule {
+  private implicit val system: ActorSystem = ActorSystem()
+  private val connection = DriverManager.getConnection("jdbc:sqlite:/Users/rinatmoravia/sqlite/Home_Secure.db")
+  protected val dslContext = DSL.using(connection, SQLDialect.SQLITE)
 
   override def configure() = {
-    // Use the system clock as the default implementation of Clock
-    bind(classOf[Clock]).toInstance(Clock.systemDefaultZone)
 
-    // Ask Guice to create an instance of ApplicationTimer when the
-    // application starts.
+    bind(classOf[WSClient]).toInstance(AhcWSClient())
+    bind(classOf[DeviceDao]).toInstance(new DeviceDaoImpl(dslContext))
 
   }
 

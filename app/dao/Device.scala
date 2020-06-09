@@ -1,13 +1,22 @@
 package dao
 
 import entities.DeviceInfo
+import javax.inject.{Inject, Singleton}
 import org.jooq.impl.DSL
-import org.jooq.{Record, Result}
+import org.jooq.{DSLContext, Record, Result}
 
 import scala.jdk.javaapi.CollectionConverters.asScala
 
 
-class Device extends Dao {
+trait DeviceDao extends Dao{
+
+  def getDeviceInfo(userAgent: String): Option[DeviceInfo]
+
+  def insertDeviceInfo(deviceInfo: DeviceInfo): Int
+}
+
+@Singleton
+class DeviceDaoImpl @Inject()(dslContext: DSLContext) extends DeviceDao {
 
   private val tableName = "Devices"
 
@@ -18,7 +27,7 @@ class Device extends Dao {
     mapper(devicesInfo).headOption
   }
 
-  def insertDeviceInfo(deviceInfo: DeviceInfo) = {
+  def insertDeviceInfo(deviceInfo: DeviceInfo): Int = {
     dslContext.insertInto(DSL.table(tableName))
       .columns(DSL.field("user_agent"), DSL.field("is_mobile_device"), DSL.field("type"), DSL.field("brand"),
         DSL.field("brand_code"), DSL.field("brand_url"), DSL.field("name"))
