@@ -1,9 +1,8 @@
 import java.sql.DriverManager
-import java.time.Clock
 
-import Dao.{DeviceDao, DeviceDaoImpl}
 import akka.actor.ActorSystem
 import com.google.inject.AbstractModule
+import dao.{DeviceDao, DeviceDaoImpl}
 import org.jooq.SQLDialect
 import org.jooq.impl.DSL
 import play.api.libs.ws.WSClient
@@ -14,7 +13,7 @@ import play.api.libs.ws.ahc.AhcWSClient
  * This class is a Guice module that tells Guice how to bind several
  * different types. This Guice module is created when the Play
  * application starts.
-
+ *
  * Play will automatically use any class called `Module` that is in
  * the root package. You can create modules in other locations by
  * adding `play.modules.enabled` settings to the `application.conf`

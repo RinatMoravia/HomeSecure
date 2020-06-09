@@ -1,7 +1,9 @@
-import dao.Device
-import entities.DeviceInfo
 import com.google.inject.Guice
+import dao.DeviceDao
+import entities.{DeviceInfo, FileLine}
 import services.ApiService
+
+import scala.io.Source
 
 object Main extends App {
 
@@ -10,14 +12,22 @@ object Main extends App {
   val device = injector.getInstance(classOf[DeviceDao])
 
 
-  apiService.getDevicesDetails("Xbox Live Client/2.0.17511.0")
+//  apiService.getDevicesDetails("Xbox Live Client/2.0.17511.0")
 
+  val source = Source.fromFile("/Users/rinatmoravia/Downloads/test/devices.csv")
+  val s = "dfgdfgdfgdfg"
+  for (line <- source.getLines()){
+    val fl = FileLine(line)
+    println(fl)
+  }
+
+  source.close()
 
   val deviceInfo1 = DeviceInfo("dsf", "dfgdfg", "dfg", "code", "url", "name", Some("userAgent33"))
   val deviceInfo2 = DeviceInfo("dsf", "dfgdfg", "dfg", "code", "url", "name", Some("userAgent66"))
 
-//  device.insertDeviceInfo(deviceInfo1)
-//  device.insertDeviceInfo(deviceInfo2)
+  //  device.insertDeviceInfo(deviceInfo1)
+  //  device.insertDeviceInfo(deviceInfo2)
   print(device.getDeviceInfo("userAgent33"))
   System.exit(1)
 
