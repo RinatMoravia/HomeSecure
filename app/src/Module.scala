@@ -4,7 +4,8 @@ import java.sql.DriverManager
 
 import akka.actor.ActorSystem
 import com.google.inject.AbstractModule
-import dao.{DeviceDao, DeviceDaoImpl}
+import com.typesafe.config.ConfigFactory
+import dao.{DeviceInfoDao, DeviceInfoDaoImpl}
 import org.jooq.SQLDialect
 import org.jooq.impl.DSL
 import play.api.libs.ws.WSClient
@@ -24,12 +25,13 @@ import play.api.libs.ws.ahc.AhcWSClient
 class Module extends AbstractModule {
   private implicit val system: ActorSystem = ActorSystem()
   private val connection = DriverManager.getConnection("jdbc:sqlite:/Users/rinatmoravia/sqlite/Home_Secure.db")
-  protected val dslContext = DSL.using(connection, SQLDialect.SQLITE)
+  private val dslContext = DSL.using(connection, SQLDialect.SQLITE)
+
 
   override def configure() = {
 
     bind(classOf[WSClient]).toInstance(AhcWSClient())
-    bind(classOf[DeviceDao]).toInstance(new DeviceDaoImpl(dslContext))
+    bind(classOf[DeviceInfoDao]).toInstance(new DeviceInfoDaoImpl(dslContext))
 
   }
 
