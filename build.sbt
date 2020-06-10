@@ -13,7 +13,8 @@ lazy val root = (project in file("."))
       "org.jooq" % "jooq" % "3.13.2",
       "org.jooq" % "jooq-meta" % "3.13.2",
       "org.jooq" % "jooq-codegen" % "3.13.2",
-      "org.xerial" % "sqlite-jdbc" % "3.31.1"
+      "org.xerial" % "sqlite-jdbc" % "3.31.1",
+      "au.com.bytecode" % "opencsv" % "2.4"
     ),
     scalacOptions ++= Seq(
       "-feature",
