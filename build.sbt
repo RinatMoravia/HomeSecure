@@ -22,5 +22,5 @@ lazy val root = (project in file("."))
       "-Xfatal-warnings"
     )
   )
-
+trapExit := false
 mainClass in (Compile, run) := Some("src.Main")

@@ -1,27 +1,25 @@
 package src
 
-import java.io.{BufferedWriter, FileWriter}
-import java.util
-
-import com.google.inject.Guice
-import dao.DeviceDao
-import entities.FileLine
-import services.ApiService
-
-import scala.jdk.javaapi.CollectionConverters.asJava
-import au.com.bytecode.opencsv.CSVWriter
-
-import scala.collection.mutable.ListBuffer
-
+import services.MergeDeviceDetails
 
 object Main extends App {
 
-  if (args.length != 1){
+  print(args.length)
+  if (args.length != 3) {
     println("bad input")
     System.exit(1)
   }
 
+  val conf = Conf(args(0), args(1), args(2))
 
+  val mergeDeviceDetails = MergeDeviceDetails(conf)
+
+
+  mergeDeviceDetails.initFiles()
+
+  mergeDeviceDetails.MergeFileAndDeviceDetails()
+
+  mergeDeviceDetails.closeFiles()
 
   System.exit(1)
 
