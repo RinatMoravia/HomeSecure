@@ -1,3 +1,9 @@
+Home Secure Technical Test
+A submission task of Home secure backend developer candidate exercise. 
+The service reads from a given CSV file line by line
+
+
+
 I userd slqlite DB so u need to install sqlite and run the script from command line:
 .open 'Home_Secure.db'
 CREATE TABLE "Devices" (
@@ -16,3 +22,4 @@ In order to rum the program u need to give 3 parameters:
 sbt "run <input file path> <access key> <output file path>"
 example:
 sbt "run /Users/rinatmoravia/devices.csv 12827733d77e0e6e5f54115a34e49da3 /Users/rinatmoravia/devicesoutput.csv"
+
